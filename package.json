@@ -1,0 +1,30 @@
+{
+	"name": "regression",
+	"version": "0.0.1",
+	"description": "An interactive tool to explore regression lines",
+	"keywords": ["regression", "d3", "interactive", "statistics"],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/mit-license.php"
+		}
+	],
+	"maintainers": [
+		{
+			"name": "Haris Skiadas",
+			"web": "https://github.com/skiadas"
+		}
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"serv": "0.0.x",
+		"bower": "0.9.x"
+	},
+	"scripts": {
+		"postinstall": "bower install",
+		"start": "serv --port 8000"
+	},
+	"ignore": [
+		"lib/"
+	]
+}
