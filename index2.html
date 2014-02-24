@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-US" class="loading">
+<head>
+	<meta charset="utf-8">
+	<!-- From HTML 5 Boilerplate: Use .htaccess instead. See: h5bp.com/i/378 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>D3 Regression FTW!</title>
+
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" type="text/css" href="basic.css">
+</head>
+<body>
+<h1>Welcome to the amazing regression page. Plot away!</h1>
+<div id="graphArea"><h2>Graph</h2>
+  <svg id="xyplot" width="500px" height = "500px"></svg></div>
+<div id="dataArea">
+  <div id="coords"><h2>Coordinates</h2>
+    <table>
+      <tr><th>x</th><th>y</th><th>pred. y</th><th>resid</th></tr>
+      <tr class="val"><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    </table>
+  </div>
+  <div id="summaries"><h2>Summaries</h2><table></table></div>
+  <div id="points"><h2>Points</h2><table><tr><th>x</th><th>y</th></tr></table></div>
+</div>
+</body>
+<script src="components/d3/d3.js"></script>
+<script src="pointsArray.js"></script>
+<script src="noncujo.js"></script>
+</html>
