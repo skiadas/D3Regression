@@ -13,6 +13,16 @@ svg.append("line").classed("residual", true).attr({
     "stroke-width": "1px", stroke: "gray"
 });
 svg.append("circle").classed("linepoint", true).attr({ r: "2px", fill: "red" });
+var xmean = svg.append("line").classed("line", true).attr({ 
+    "stroke-width": "1px",
+    "stroke": "gray",
+     "stroke-dasharray": "3,3"
+    });
+var ymean = svg.append("line").classed("line", true).attr({ 
+    "stroke-width": "1px",
+    "stroke": "gray",
+     "stroke-dasharray": "3,3"
+    });
 var pointsTable = d3.select("#points table");
 var coordsRow = d3.select("#coords table tr.val");
 
@@ -34,6 +44,7 @@ var yfix = pixelated(scaled(yscale, getIndex(1)));
 function repaint() {
     paintPoints();
     paintLine();
+    paintMeans();
     fillPointTable();
     updateCoords();
 }
@@ -69,6 +80,20 @@ function paintLine() {
         }
 }
 
+// Draws the mean lines
+function paintMeans() {
+    var mx = pointsArray.stats.meanx;
+    var my = pointsArray.stats.meany;
+    xmean.transition()
+         .duration(1000)
+         .ease("bounce")
+         .attr({ x1: xscale(mx), y1: yscale(0), x2: xscale(mx), y2: yscale(1)});
+    ymean.transition()
+         .duration(1000)
+         .ease("bounce")
+         .attr({ x1: xscale(0), y1: yscale(my), x2: xscale(1), y2: yscale(my)});
+}
+
 // Populates the point table
 function fillPointTable() {
     var allPoints = pointsTable.selectAll("tr.val").data(pointsArray.values, keyFun);
@@ -82,7 +107,7 @@ function fillPointTable() {
         .append("td").html(format);
     newPoints
         .style({ opacity: 0.2, "background-color": "gray" })
-        .transition().duration(1500).ease("linear")
+        .transition().duration(1500).ease("bounce")
         .style({ opacity: 1, "background-color": "white" });
 }
 
